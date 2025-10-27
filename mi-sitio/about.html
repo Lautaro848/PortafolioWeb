@@ -4,54 +4,86 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — Lautaro Braun</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/styles.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#000000',
+            accent: '#FF6B35',
+            secondary: '#4ECDC4',
+            muted: '#718096',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <header class="site-header">
-    <div class="brand"><a href="index.html">LAUTARO BRAUN</a></div>
-    <nav class="main-nav">
-      <a href="work.html">WORK</a>
-      <a href="about.html" class="active">ABOUT</a>
-      <a href="archive.html">ARCHIVE</a>
+<body class="font-sans text-gray-800 bg-white min-h-screen flex flex-col items-center">
+  <header class="w-full max-w-6xl flex justify-between items-center py-6 px-6 mx-auto border-b border-gray-200">
+    <div class="brand">
+      <a href="index.html" class="font-black text-xl text-primary uppercase tracking-tight">LAUTARO BRAUN</a>
+    </div>
+    <nav class="main-nav flex gap-8 items-center">
+      <a href="work.html" class="font-semibold text-sm uppercase tracking-wide text-gray-800 hover:text-accent transition-colors">WORK</a>
+      <a href="about.html" class="font-bold text-sm uppercase tracking-wide text-accent border-b-2 border-accent pb-1">ABOUT</a>
+      <a href="archive.html" class="font-semibold text-sm uppercase tracking-wide text-gray-800 hover:text-accent transition-colors">ARCHIVE</a>
     </nav>
   </header>
 
-  <main class="page-content">
-    <h1>ABOUT ME</h1>
+  <main class="flex-1 w-full max-w-4xl mx-auto py-20 px-6">
+    <h1 class="font-black text-4xl md:text-5xl text-primary uppercase tracking-tight mb-8">ABOUT ME</h1>
     
-    <p>
-      <strong>Software Engineering Student</strong> passionate about creating digital solutions 
-      that merge technical excellence with outstanding user experience.
-    </p>
+    <div class="space-y-6 text-lg text-gray-700 max-w-3xl">
+      <p>
+        <strong class="font-semibold text-primary">Software Engineering Student</strong> passionate about creating digital solutions 
+        that merge technical excellence with outstanding user experience.
+      </p>
 
-    <p>
-      I specialize in full-stack development with modern technologies including 
-      <strong>JavaScript, React, Node.js, Python, and Java</strong>. Currently expanding my 
-      skills in cloud computing and mobile development.
-    </p>
+      <p>
+        I specialize in full-stack development with modern technologies including 
+        <strong class="font-semibold text-accent">JavaScript, React, Node.js, Python, and Java</strong>. Currently expanding my 
+        skills in cloud computing and mobile development.
+      </p>
 
-    <p>
-      When I'm not coding, you'll find me exploring new frameworks, contributing to 
-      open-source projects, or experimenting with UI/UX design principles.
-    </p>
+      <p>
+        When I'm not coding, you'll find me exploring new frameworks, contributing to 
+        open-source projects, or experimenting with UI/UX design principles.
+      </p>
+    </div>
 
-    <div style="margin-top: 40px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 20px;">TECHNOLOGIES</h2>
-      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <span style="background: #FF6B35; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">JavaScript</span>
-        <span style="background: #4ECDC4; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">React</span>
-        <span style="background: #000; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Node.js</span>
-        <span style="background: #FF6B35; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Python</span>
-        <span style="background: #4ECDC4; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Java</span>
+    <!-- Technologies Section -->
+    <div class="mt-16">
+      <h2 class="font-bold text-2xl text-primary uppercase tracking-wide mb-6">TECHNOLOGIES</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">JavaScript</span>
+        <span class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">React</span>
+        <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">Node.js</span>
+        <span class="bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">Python</span>
+        <span class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">Java</span>
+        <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">MySQL</span>
+        <span class="bg-accent text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">Git</span>
+        <span class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">Tailwind</span>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="mt-16">
+      <h2 class="font-bold text-2xl text-primary uppercase tracking-wide mb-6">EDUCATION</h2>
+      <div class="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200">
+        <h3 class="font-bold text-lg text-primary mb-2">Software Engineering Degree</h3>
+        <p class="text-muted text-sm uppercase tracking-wide mb-3">University • 2023 - Present</p>
+        <p class="text-gray-700">Focus on web development, algorithms, and software architecture.</p>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 LAUTARO BRAUN</p>
+  <footer class="w-full bg-primary text-white text-center py-10 mt-20">
+    <p class="font-semibold">© 2025 LAUTARO BRAUN</p>
   </footer>
 </body>
 </html>
