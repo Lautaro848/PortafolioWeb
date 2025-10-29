@@ -5,71 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — Lautaro Braun</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#000000',
-            accent: '#FF6B35',
-            secondary: '#4ECDC4',
-            muted: '#718096',
-          }
-        }
-      }
-    }
-  </script>
 </head>
-<body class="font-sans text-gray-800 bg-white min-h-screen flex flex-col items-center">
-  <header class="w-full max-w-6xl flex justify-between items-center py-6 px-6 mx-auto border-b border-gray-200">
-    <div class="brand">
-      <a href="index.html" class="font-black text-xl text-primary uppercase tracking-tight">LAUTARO BRAUN</a>
-    </div>
-    <nav class="main-nav flex gap-8 items-center">
-      <a href="work.html" class="font-bold text-sm uppercase tracking-wide text-accent border-b-2 border-accent pb-1">WORK</a>
-      <a href="about.html" class="font-semibold text-sm uppercase tracking-wide text-gray-800 hover:text-accent transition-colors">ABOUT</a>
-      <a href="archive.html" class="font-semibold text-sm uppercase tracking-wide text-gray-800 hover:text-accent transition-colors">ARCHIVE</a>
-    </nav>
-  </header>
 
-  <main class="flex-1 w-full max-w-6xl mx-auto py-20 px-6">
-    <h1 class="font-black text-4xl md:text-5xl text-primary uppercase tracking-tight mb-6">MY WORK</h1>
-    <p class="text-lg text-muted max-w-2xl mb-12">Selection of projects developed during my software engineering journey</p>
+<body class="bg-white text-gray-900 font-sans">
+<header class="max-w-6xl w-full mx-auto py-6 px-6 flex justify-between items-center">
+  <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
+  <nav class="flex gap-6 font-semibold">
+    <a href="work.html" class="text-orange-500">WORK</a>
+    <a href="about.html">ABOUT</a>
+    <a href="archive.html">ARCHIVE</a>
+  </nav>
+</header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Project 1 -->
-      <article class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-        <img 
-          src="images/proyectos/proyecto1.webp" 
-          alt="E-Commerce Platform"
-          class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        >
-        <div class="p-6">
-          <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3">E-COMMERCE PLATFORM</h3>
-          <p class="text-muted text-sm leading-relaxed">Full-stack e-commerce solution with React, Express and MongoDB</p>
-        </div>
-      </article>
+<section class="max-w-6xl mx-auto grid gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="border p-4 rounded-lg shadow hover:shadow-xl transition">
+    <h3 class="font-bold text-lg mb-2">E-Commerce Platform</h3>
+    <p class="text-gray-600 text-sm">React + Express + MongoDB</p>
+  </div>
+</section>
 
-      <!-- Project 2 -->
-      <article class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-        <img 
-          src="images/proyectos/proyecto2.webp" 
-          alt="Task Manager App"
-          class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-        >
-        <div class="p-6">
-          <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3">TASK MANAGER APP</h3>
-          <p class="text-muted text-sm leading-relaxed">Productivity application with real-time updates and team collaboration</p>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <footer class="w-full bg-primary text-white text-center py-10 mt-20">
-    <p class="font-semibold">© 2025 LAUTARO BRAUN</p>
-  </footer>
+<img src="imagenes/Mascota2-sinfondo.png" class="cursor-mascot" id="mascot">
+<script src="scripts.js"></script>
 </body>
 </html>

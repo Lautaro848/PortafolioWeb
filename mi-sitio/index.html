@@ -1,19 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Portafolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lautaro Braun — Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .cursor-mascot {
+      position: fixed;
+      width: 64px;
+      height: 64px;
+      bottom: 60px;
+      left: 60px;
+      image-rendering: pixelated;
+      pointer-events: none;
+      z-index: 9999;
+      background: transparent;
+    }
+
+    /* Animación de flotación */
+    .cursor-mascot:not(.walk) {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Animación de caminar */
+    .walk {
+      animation: walk 0.4s steps(2) infinite;
+    }
+    @keyframes walk {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media(max-width:768px){
+      .cursor-mascot{display:none;}
+    }
+  </style>
 </head>
-<body>
 
-  <!-- Tu contenido va acá -->
-  <h1>Bienvenido a mi Portafolio</h1>
+<body class="bg-white text-gray-900 font-sans">
+  
+<header class="max-w-6xl w-full mx-auto py-6 px-6 flex justify-between items-center">
+  <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
+  <nav class="flex gap-6 font-semibold">
+    <a href="work.html" class="hover:text-orange-500">WORK</a>
+    <a href="about.html" class="hover:text-orange-500">ABOUT</a>
+    <a href="archive.html" class="hover:text-orange-500">ARCHIVE</a>
+  </nav>
+</header>
 
-  <!-- MASCOTA PIXEL-ART -->
-  <img src="imagenes/Mascota2.png" class="cursor-mascot" alt="Mascota" />
+<main class="max-w-6xl mx-auto text-center px-6 py-24">
+  <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight uppercase">
+    Developer & Creative Coder
+  </h1>
+  <p class="text-lg text-gray-600 mt-6 max-w-xl mx-auto">
+    Building digital experiences with clean code and modern design.
+  </p>
+  <a href="work.html" class="mt-10 inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-600 transition">
+    Explore My Work →
+  </a>
+</main>
 
-  <script src="script.js"></script>
+<footer class="text-center py-8 text-gray-600 text-sm">
+  © 2025 - LAUTARO BRAUN
+</footer>
+
+<img src="imagenes/Mascota2-sinfondo.png" class="cursor-mascot" id="mascot">
+
+<script src="scripts.js"></script>
 </body>
 </html>
