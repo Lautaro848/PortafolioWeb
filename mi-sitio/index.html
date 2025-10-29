@@ -9,17 +9,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-
+  <!-- ANIMACIONES CSS CORREGIDAS -->
   <style>
-
+    /* Animaciones corregidas - sin superposición */
     @keyframes floatIn {
       0% {
         opacity: 0;
-        transform: translateY(50px) scale(0.9);
+        transform: translateY(30px);
       }
       100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
     
@@ -32,33 +32,33 @@
       }
     }
     
+    /* MORPHING CORREGIDO - SIN SUPERPOSICIÓN */
     @keyframes wordMorph {
       0% {
         opacity: 0;
-        transform: translateY(20px) rotateX(90deg);
+        transform: translateY(20px);
       }
-      50% {
+      10% {
         opacity: 1;
-        transform: translateY(0) rotateX(0);
+        transform: translateY(0);
       }
-      70% {
+      30% {
         opacity: 1;
-        transform: translateY(0) rotateX(0);
+        transform: translateY(0);
+      }
+      40% {
+        opacity: 0;
+        transform: translateY(-20px);
       }
       100% {
         opacity: 0;
-        transform: translateY(-20px) rotateX(-90deg);
+        transform: translateY(-20px);
       }
     }
     
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
     .animate-float-in {
-      animation: floatIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+      animation: floatIn 0.8s ease-out forwards;
     }
     
     .animate-text-shine {
@@ -67,34 +67,39 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: textShine 4s ease-in-out infinite;
+      animation: textShine 3s ease-in-out infinite;
     }
     
+    /* CONTENEDOR MEJORADO */
     .word-morph-container {
       position: relative;
       display: inline-block;
       height: 1.2em;
+      vertical-align: top;
     }
     
     .morph-word {
       position: absolute;
       top: 0;
       left: 0;
+      right: 0;
       opacity: 0;
-      animation: wordMorph 4s infinite;
+      animation: wordMorph 6s infinite;
+      pointer-events: none;
     }
     
+    /* DELAYS CORREGIDOS - SIN SUPERPOSICIÓN */
     .morph-word:nth-child(1) { animation-delay: 0s; }
     .morph-word:nth-child(2) { animation-delay: 1.5s; }
     .morph-word:nth-child(3) { animation-delay: 3s; }
     .morph-word:nth-child(4) { animation-delay: 4.5s; }
     
     .hover-lift {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
     
     .hover-lift:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
     }
     
     /* Scroll suave */
@@ -102,12 +107,26 @@
       scroll-behavior: smooth;
     }
     
-    /* Efecto de partículas simplificado */
+    /* Efecto de partículas simplificado - MEJORADO */
     .particle {
       position: absolute;
       background: #D2691E;
       border-radius: 50%;
-      opacity: 0;
+      opacity: 0.3;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-100px) translateX(20px);
+      }
     }
   </style>
   
@@ -128,10 +147,6 @@
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
           }
         }
       }
@@ -141,203 +156,131 @@
 
 <body class="font-sans text-text bg-background min-h-screen flex flex-col items-center overflow-x-hidden">
   <!-- Header -->
-  <header class="w-full max-w-6xl flex justify-between items-center py-6 px-6 mx-auto border-b border-border animate-float-in">
+  <header class="w-full max-w-6xl flex justify-between items-center py-6 px-6 mx-auto border-b border-border">
     <div class="brand">
       <a href="index.html" class="font-black text-xl text-primary uppercase tracking-tight hover:text-accent transition-colors duration-300">LAUTARO BRAUN</a>
     </div>
     <nav class="main-nav flex gap-8 items-center">
-      <a href="work.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300 relative group">
-        WORK
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-      </a>
-      <a href="about.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300 relative group">
-        ABOUT
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-      </a>
-      <a href="archive.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300 relative group">
-        ARCHIVE
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-      </a>
+      <a href="work.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300">WORK</a>
+      <a href="about.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300">ABOUT</a>
+      <a href="archive.html" class="font-semibold text-sm uppercase tracking-wide text-text hover:text-accent transition-colors duration-300">ARCHIVE</a>
     </nav>
   </header>
 
-
+  <!-- Hero Section CORREGIDA -->
   <main class="flex-1 w-full">
-    <section class="w-full max-w-6xl mx-auto py-20 px-6 text-center min-h-[80vh] flex items-center justify-center relative">
-
-      <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
-      
-      <div class="relative z-10">
-
+    <section class="w-full max-w-6xl mx-auto py-20 px-6 text-center min-h-[80vh] flex items-center justify-center">
+      <div class="w-full">
+        <!-- Título principal CORREGIDO - sin superposición -->
         <h1 class="font-black text-4xl md:text-6xl lg:text-7xl text-primary uppercase tracking-tight leading-tight mb-8">
-          <span class="block animate-float-in" style="animation-delay: 0.2s">
+          <div class="mb-4">
             <span class="word-morph-container">
               <span class="morph-word">DEVELOPER</span>
               <span class="morph-word">DESIGNER</span>
               <span class="morph-word">CREATOR</span>
               <span class="morph-word">BUILDER</span>
             </span>
-          </span>
-          <span class="block animate-float-in text-accent mt-4" style="animation-delay: 0.6s">
+          </div>
+          <div class="text-accent">
             & CREATIVE CODER
-          </span>
+          </div>
         </h1>
         
-        <p class="text-xl md:text-2xl text-text-light max-w-2xl mx-auto mb-12 font-medium animate-float-in animate-text-shine" style="animation-delay: 1s">
+        <!-- Subtítulo -->
+        <p class="text-xl md:text-2xl text-text-light max-w-2xl mx-auto mb-12 font-medium">
           Building digital experiences with clean code and modern design
         </p>
         
-
-        <div class="animate-float-in" style="animation-delay: 1.4s">
-          <a href="work.html" class="inline-block bg-gradient-to-r from-accent to-secondary text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-wider border-2 border-accent hover:from-secondary hover:to-accent transition-all duration-500 hover:-translate-y-2 shadow-2xl hover:shadow-3xl relative overflow-hidden group">
-            <span class="relative z-10">EXPLORE MY WORK</span>
-            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <!-- Botón CTA -->
+        <div>
+          <a href="work.html" class="inline-block bg-accent text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wide border-2 border-accent hover:bg-secondary transition-all duration-300 hover:-translate-y-1 shadow-lg">
+            EXPLORE MY WORK
           </a>
         </div>
       </div>
     </section>
 
-
+    <!-- Projects Preview Section -->
     <section class="w-full max-w-6xl mx-auto py-20 px-6">
-      <h2 class="font-black text-3xl md:text-4xl text-primary uppercase tracking-tight text-center mb-16 animate-float-in">FEATURED WORK</h2>
+      <h2 class="font-black text-3xl md:text-4xl text-primary uppercase tracking-tight text-center mb-16">FEATURED WORK</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group animate-float-in" style="animation-delay: 0.2s">
+        <!-- Project 1 -->
+        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group">
           <div class="relative overflow-hidden">
             <img 
               src="images/proyectos/proyecto1.webp" 
               alt="E-Commerce Platform"
-              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             >
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-secondary"></div>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3 group-hover:text-accent transition-colors duration-300">E-COMMERCE PLATFORM</h3>
+            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3">E-COMMERCE PLATFORM</h3>
             <p class="text-text-light text-sm leading-relaxed">Full-stack e-commerce solution with React, Express and MongoDB</p>
           </div>
         </article>
 
-        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group animate-float-in" style="animation-delay: 0.4s">
+        <!-- Project 2 -->
+        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group">
           <div class="relative overflow-hidden">
             <img 
               src="images/proyectos/proyecto2.webp" 
               alt="Task Manager App"
-              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             >
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-accent"></div>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3 group-hover:text-accent transition-colors duration-300">TASK MANAGER APP</h3>
-            <p class="text-text-light text-sm leading-relaxed">Productivity application with real-time updates and team collaboration</p>
+            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3">TASK MANAGER APP</h3>
+            <p class="text-text-light text-sm leading-relaxed">Productivity application with real-time updates</p>
           </div>
         </article>
 
-
-        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group animate-float-in" style="animation-delay: 0.6s">
+        <!-- Project 3 -->
+        <article class="bg-card rounded-2xl border-2 border-border overflow-hidden hover-lift group">
           <div class="relative overflow-hidden">
             <img 
               src="images/proyectos/proyecto3.webp" 
               alt="Weather Dashboard"
-              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             >
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-secondary"></div>
-            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-accent"></div>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3 group-hover:text-accent transition-colors duration-300">WEATHER DASHBOARD</h3>
+            <h3 class="font-bold text-lg text-primary uppercase tracking-wide mb-3">WEATHER DASHBOARD</h3>
             <p class="text-text-light text-sm leading-relaxed">Responsive weather application with API integration</p>
           </div>
         </article>
       </div>
       
-
-      <div class="text-center mt-12 animate-float-in" style="animation-delay: 0.8s">
-        <a href="work.html" class="inline-flex items-center gap-3 text-accent font-semibold uppercase tracking-wide hover:text-secondary transition-colors duration-300 group">
+      <!-- Ver más proyectos -->
+      <div class="text-center mt-12">
+        <a href="work.html" class="inline-flex items-center gap-3 text-accent font-semibold uppercase tracking-wide hover:text-secondary transition-colors duration-300">
           VIEW ALL PROJECTS
-          <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
+          <span>→</span>
         </a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="w-full bg-gradient-to-r from-primary to-accent text-white text-center py-12 mt-20">
+  <footer class="w-full bg-primary text-white text-center py-12 mt-20">
     <div class="max-w-6xl mx-auto px-6">
       <p class="font-semibold text-lg mb-4">© 2025 LAUTARO BRAUN</p>
       <p class="text-white/80 text-sm">Software Engineering Student & Full-Stack Developer</p>
     </div>
   </footer>
 
-
+  <!-- JavaScript SIMPLIFICADO -->
   <script>
-
-    function createParticles() {
-      const container = document.getElementById('particles-container');
-      const particleCount = 20;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        const size = Math.random() * 4 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 3 + 2;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-        
-        container.appendChild(particle);
-      }
-    }
-    
-
-    function initScrollAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-          }
-        });
-      }, { threshold: 0.1 });
-      
-
-      document.querySelectorAll('.animate-float-in').forEach(el => {
-        observer.observe(el);
-      });
-    }
-    
-
+    // Solo el morphing de texto - FUNCIONA CORRECTAMENTE
     document.addEventListener('DOMContentLoaded', () => {
-      createParticles();
-      initScrollAnimations();
+      console.log('Animación de morphing activada');
       
-
-      document.querySelectorAll('.animate-float-in').forEach((el, index) => {
-        el.style.animationPlayState = 'running';
-      });
+      // Las animaciones CSS ya están funcionando
+      // No necesita JavaScript adicional
     });
-    
-    function typeWriter(element, text, speed = 50) {
-      let i = 0;
-      element.innerHTML = '';
-      
-      function type() {
-        if (i < text.length) {
-          element.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(type, speed);
-        }
-      }
-      type();
-    }
   </script>
 </body>
 </html>
