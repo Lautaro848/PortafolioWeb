@@ -27,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Header estilo LABU */
+
 .site-header {
   width: 100%;
   max-width: var(--max-width);
@@ -84,7 +84,7 @@ body {
   border-radius: 2px;
 }
 
-/* Hero section estilo LABU */
+
 .hero {
   width: 100%;
   max-width: var(--max-width);
@@ -132,7 +132,6 @@ body {
   text-decoration: none;
 }
 
-/* Grid cards estilo LABU */
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -195,7 +194,6 @@ body {
   line-height: 1.5;
 }
 
-/* Page content */
 .page-content {
   width: 100%;
   max-width: var(--max-width);
