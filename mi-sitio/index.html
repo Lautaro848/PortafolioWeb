@@ -81,7 +81,7 @@
     <div class="mascot-inner">
       <model-viewer id="mascot"
         class="mascot-viewer"
-        src="./imagenes/masacota3D.glb"
+        src="imagenes/masacota3D.glb"
         alt="Mascota 3D de Lautaro"
         shadow-intensity="1"
         camera-controls
@@ -97,6 +97,12 @@
       </model-viewer>
     </div>
     <p class="text-sm text-gray-500 mt-2">Usa el ratón o el táctil para rotar la mascota. En dispositivos compatibles puedes verla en AR.</p>
+    <div id="model-error" style="display:none; margin-top:12px; padding:8px 12px; background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; border-radius:6px;">
+      Error cargando el modelo 3D. 
+      <button onclick="window.location.reload()" style="margin-left:8px; padding:4px 8px; background:#dc2626; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Recargar página
+      </button>
+    </div>
   </div>
 </main>
 
@@ -107,6 +113,6 @@
 <!-- (El visor pequeño tipo 'cursor' permanece en CSS como .cursor-mascot, pero hemos insertado
      un visor embebido y responsivo dentro del contenido principal para que sea visible.) -->
 
-<script src="scripts.js"></script>
+<script src="./scripts/scripts.js"></script>
 </body>
 </html>

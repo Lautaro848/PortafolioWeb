@@ -3,10 +3,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const mascot = document.getElementById('mascot');
     const wrapper = document.querySelector('.mascot-wrapper');
     const inner = document.querySelector('.mascot-inner');
+
+    // Verificar que la mascota y wrappers existen
+    if (!mascot || !wrapper || !inner) {
+        console.log('Mascot element or wrapper not found');
+        return;
+    }
+    
+    console.log('🔍 Mascot element found:', mascot);
+    
+    // Debug para modelo 3D
+    if (mascot.tagName === 'MODEL-VIEWER') {
+        console.log('📁 Loading 3D model:', mascot.getAttribute('src'));
+        
+        mascot.addEventListener('load', () => {
+            console.log('✅ Mascota 3D cargada correctamente!');
+        });
+        
+        mascot.addEventListener('error', (event) => {
+            console.error('❌ Error cargando modelo 3D:', event.detail);
+            // Mostrar el error en la página
+            const errorMsg = document.createElement('div');
+            errorMsg.style.color = '#dc2626';
+            errorMsg.style.marginTop = '8px';
+            errorMsg.textContent = 'Error cargando el modelo 3D. Por favor recarga la página.';
+            wrapper.appendChild(errorMsg);
+        });
+    }
     
     // Detectar animaciones disponibles cuando el modelo cargue
-    if (mascot) {
-        mascot.addEventListener('load', async () => {
+    mascot.addEventListener('load', async () => {
             console.log('Modelo cargado, buscando animaciones...');
             const animations = mascot.availableAnimations;
             console.log('Animaciones disponibles:', animations);
