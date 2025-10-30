@@ -68,25 +68,31 @@
   <a href="work.html" class="mt-10 inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-600 transition">
     Explore My Work →
   </a>
+  <!-- Visor 3D embebido en el contenido principal -->
+  <div class="mascot-wrapper mt-8">
+    <div class="mascot-inner">
+      <model-viewer id="mascot"
+        class="mascot-viewer"
+        src="imagenes/masacota3D.glb"
+        alt="Mascota 3D de Lautaro"
+        shadow-intensity="1"
+        camera-controls
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        interaction-policy="allow-when-focused"
+        style="width:320px; height:320px; display:block;">
+      </model-viewer>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">Usa el ratón o el táctil para rotar la mascota. En dispositivos compatibles puedes verla en AR.</p>
+  </div>
 </main>
 
 <footer class="text-center py-8 text-gray-600 text-sm">
   © 2025 - LAUTARO BRAUN
 </footer>
 
-<!-- 🔥 Mascota 3D -->
-<model-viewer id="mascot"
-  class="cursor-mascot"
-  src="imagenes/mascota3D.glb"
-  alt="Mascota 3D"
-  autoplay
-  disable-zoom
-  shadow-intensity="0.8"
-  auto-rotate
-  camera-controls
-  exposure="1.1"
-  style="--poster-color: transparent;">
-</model-viewer>
+<!-- (El visor pequeño tipo 'cursor' permanece en CSS como .cursor-mascot, pero hemos insertado
+     un visor embebido y responsivo dentro del contenido principal para que sea visible.) -->
 
 <script src="scripts.js"></script>
 </body>
