@@ -6,6 +6,9 @@
   <title>Lautaro Braun — Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Carga del visor 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <style>
     .cursor-mascot {
       position: fixed;
@@ -13,12 +16,13 @@
       height: 64px;
       bottom: 60px;
       left: 60px;
-      image-rendering: pixelated;
       pointer-events: none;
       z-index: 9999;
       background: transparent;
+      transition: transform 0.2s ease-out;
     }
 
+    /* Animación de flotación */
     .cursor-mascot:not(.walk) {
       animation: float 3s ease-in-out infinite;
     }
@@ -27,6 +31,7 @@
       50% { transform: translateY(-6px); }
     }
 
+    /* Animación de caminar (movimiento leve del componente) */
     .walk {
       animation: walk 0.4s steps(2) infinite;
     }
@@ -69,7 +74,19 @@
   © 2025 - LAUTARO BRAUN
 </footer>
 
-<img src="imagenes/Mascota2-sinfondo.png" class="cursor-mascot" id="mascot">
+<!-- 🔥 Mascota 3D -->
+<model-viewer id="mascot"
+  class="cursor-mascot"
+  src="imagenes/mascota3D.glb"
+  alt="Mascota 3D"
+  autoplay
+  disable-zoom
+  shadow-intensity="0.8"
+  auto-rotate
+  camera-controls
+  exposure="1.1"
+  style="--poster-color: transparent;">
+</model-viewer>
 
 <script src="scripts.js"></script>
 </body>
