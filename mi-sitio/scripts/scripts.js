@@ -4,6 +4,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.querySelector('.mascot-wrapper');
     const inner = document.querySelector('.mascot-inner');
     
+    // Detectar animaciones disponibles cuando el modelo cargue
+    if (mascot) {
+        mascot.addEventListener('load', async () => {
+            console.log('Modelo cargado, buscando animaciones...');
+            const animations = mascot.availableAnimations;
+            console.log('Animaciones disponibles:', animations);
+            
+            if (animations && animations.length > 0) {
+                // Buscar animaciones de caminar/correr por nombre común
+                const walkAnim = animations.find(name => 
+                    name.toLowerCase().includes('walk') || 
+                    name.toLowerCase().includes('run') ||
+                    name.toLowerCase().includes('move'));
+                
+                if (walkAnim) {
+                    console.log('¡Encontrada animación de caminar!:', walkAnim);
+                    mascot.setAttribute('animation-name', walkAnim);
+                    mascot.setAttribute('autoplay', true);
+                } else {
+                    console.log('No se encontró animación de caminar, usando primera disponible:', animations[0]);
+                    mascot.setAttribute('animation-name', animations[0]);
+                }
+            } else {
+                console.log('No se encontraron animaciones en el modelo');
+            }
+        });
+    }
+    
     // Verificar que la mascota y wrappers existen
     if (!mascot || !wrapper || !inner) {
         console.log('Mascot element or wrapper not found');
@@ -81,9 +109,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Flip visual según la dirección horizontal
             if (vel.x < 0) inner.classList.add('flip'); else inner.classList.remove('flip');
 
-            // Añadir clase walking si va rápido
+            // Añadir clase walking y controlar animación según velocidad
             const speed = Math.hypot(vel.x, vel.y);
-            if (speed > 80) wrapper.classList.add('walking'); else wrapper.classList.remove('walking');
+            if (speed > 80) {
+                wrapper.classList.add('walking');
+                if (mascot.availableAnimations?.length > 0) {
+                    mascot.setAttribute('autoplay', true);
+                }
+            } else {
+                wrapper.classList.remove('walking');
+                if (mascot.availableAnimations?.length > 0) {
+                    mascot.setAttribute('autoplay', false);
+                }
+            }
 
             // temporizador para cambiar velocidad
             changeTimer -= dt;
