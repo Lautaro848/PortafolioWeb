@@ -22,7 +22,29 @@
   <p class="text-gray-600">More projects coming soon...</p>
 </section>
 
-<img src="imagenes/Mascota2-sinfondo.png" class="cursor-mascot" id="mascot">
-<script src="scripts.js"></script>
+<!-- Visor 3D embebido -->
+<div class="mascot-wrapper mt-8">
+  <div class="mascot-inner">
+    <model-viewer id="mascot"
+      class="mascot-viewer"
+      src="imagenes/masacota3D.glb"
+      alt="Mascota 3D de Lautaro"
+      shadow-intensity="1"
+      camera-controls
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      interaction-policy="allow-when-focused"
+      autoplay
+      animation-name=""
+      style="width:320px; height:320px; display:block;">
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+    </model-viewer>
+  </div>
+</div>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script src="scripts/scripts.js"></script>
 </body>
 </html>
