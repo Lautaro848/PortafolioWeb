@@ -139,17 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
     wrapper.addEventListener('mouseenter', () => { isPaused = true; roam = false; wrapper.classList.remove('walking'); });
     wrapper.addEventListener('mouseleave', () => { isPaused = false; roam = true; });
 
-    // Toggle mediante botón flotante
-    const btn = document.createElement('button');
-    btn.className = 'mascot-toggle';
-    btn.title = 'Activar/desactivar mascota ambulante';
-    btn.textContent = 'Mascota: ON';
-    document.body.appendChild(btn);
-    btn.addEventListener('click', () => {
-        roam = !roam;
-        if (roam) { btn.textContent = 'Mascota: ON'; wrapper.classList.remove('walking'); } else { btn.textContent = 'Mascota: OFF'; wrapper.classList.remove('walking'); }
-    });
-
     // Arrastrar manualmente la mascota con pointer events
     let dragging = false;
     let dragOffset = { x: 0, y: 0 };
