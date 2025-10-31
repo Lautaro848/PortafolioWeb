@@ -295,7 +295,6 @@ body {
   }
 }
 
-/* Estilos para el visor 3D embebido en la página */
 .mascot-wrapper {
   text-align: center;
 }
@@ -318,7 +317,6 @@ body {
   }
 }
 
-/* Modo roaming: la mascota se mueve libremente por la ventana */
 .mascot-wrapper.roam {
   position: fixed;
   left: 20px;
@@ -338,13 +336,11 @@ body {
   border-radius: 10px;
 }
 
-/* Contenedor interior que rotamos (flip) cuando cambia dirección sin voltear el texto explicativo */
 .mascot-inner {
   display: inline-block;
   will-change: transform;
 }
 
-/* Animación de paso (bobbing) aplicada al wrapper para que no interfiera con el flip */
 .mascot-wrapper.walking {
   animation: mascot-walk 0.6s ease-in-out infinite;
 }
@@ -355,12 +351,10 @@ body {
   100% { transform: translateY(0); }
 }
 
-/* Flip del modelo (solo la parte visual, no el texto) */
 .mascot-inner.flip {
   transform: scaleX(-1);
 }
 
-/* Botón pequeño para activar/desactivar roaming */
 .mascot-toggle {
   position: fixed;
   right: 18px;

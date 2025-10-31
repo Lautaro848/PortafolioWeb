@@ -1,10 +1,8 @@
-// scripts.js - Mascota 3D interactiva
 document.addEventListener('DOMContentLoaded', function() {
     const mascot = document.getElementById('mascot');
     const wrapper = document.querySelector('.mascot-wrapper');
     const inner = document.querySelector('.mascot-inner');
 
-    // Verificar que la mascota y wrappers existen
     if (!mascot || !wrapper || !inner) {
         console.log('Mascot element or wrapper not found');
         return;
@@ -12,19 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('🔍 Mascot element found:', mascot);
     
-    // Debug para modelo 3D
     if (mascot.tagName === 'MODEL-VIEWER') {
         console.log('📁 Loading 3D model:', mascot.getAttribute('src'));
         
         mascot.addEventListener('load', () => {
             console.log('✅ Mascota 3D cargada correctamente!');
-            // Detectar animaciones disponibles cuando el modelo cargue
             console.log('Buscando animaciones...');
             const animations = mascot.availableAnimations;
             console.log('Animaciones disponibles:', animations);
             
             if (animations && animations.length > 0) {
-                // Buscar animaciones de caminar/correr por nombre común
                 const walkAnim = animations.find(name => 
                     name.toLowerCase().includes('walk') || 
                     name.toLowerCase().includes('run') ||
@@ -45,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         mascot.addEventListener('error', (event) => {
             console.error('❌ Error cargando modelo 3D:', event.detail);
-            // Mostrar el error en la página
             const errorMsg = document.createElement('div');
             errorMsg.style.color = '#dc2626';
             errorMsg.style.marginTop = '8px';
@@ -54,21 +48,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // --- Roaming (movimiento autónomo) ---
-    // Variables de estado
-    let roam = true; // por defecto se mueve
+
+    let roam = true; 
     let wrapperW = 160;
     let wrapperH = 160;
 
-    // Añadir clase roam para que el CSS lo posicione fixed
     wrapper.classList.add('roam');
 
-    // Estado físico simple
     let pos = { x: 50, y: window.innerHeight / 2 };
     let vel = { x: 90 + Math.random() * 50, y: (Math.random() - 0.5) * 40 }; // px por segundo
     let lastTime = null;
 
-    // Cambia la dirección aleatoria cada 2-4s
     function randomizeVelocity() {
         const speed = 60 + Math.random() * 140;
         const angle = (Math.random() - 0.5) * Math.PI / 3; // no sube/brinca demasiado
@@ -87,30 +77,24 @@ document.addEventListener('DOMContentLoaded', function() {
             pos.x += vel.x * dt;
             pos.y += vel.y * dt;
 
-            // tamaño del wrapper (actualizar si cambia tamaño de viewport)
             wrapperW = wrapper.offsetWidth || 140;
             wrapperH = wrapper.offsetHeight || 140;
 
-            // límites ventana
             const minX = 8;
             const minY = 8;
             const maxX = window.innerWidth - wrapperW - 8;
             const maxY = window.innerHeight - wrapperH - 8;
 
-            // Rebotes con pequeño ajuste
             if (pos.x < minX) { pos.x = minX; vel.x = Math.abs(vel.x); randomizeVelocity(); }
             if (pos.x > maxX) { pos.x = maxX; vel.x = -Math.abs(vel.x); randomizeVelocity(); }
             if (pos.y < minY) { pos.y = minY; vel.y = Math.abs(vel.y); }
             if (pos.y > maxY) { pos.y = maxY; vel.y = -Math.abs(vel.y); }
 
-            // Actualizar posición
             wrapper.style.left = Math.round(pos.x) + 'px';
             wrapper.style.top = Math.round(pos.y) + 'px';
 
-            // Flip visual según la dirección horizontal
             if (vel.x < 0) inner.classList.add('flip'); else inner.classList.remove('flip');
 
-            // Añadir clase walking y controlar animación según velocidad
             const speed = Math.hypot(vel.x, vel.y);
             if (speed > 80) {
                 wrapper.classList.add('walking');
@@ -124,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // temporizador para cambiar velocidad
             changeTimer -= dt;
             if (changeTimer <= 0) { changeTimer = 2 + Math.random() * 3; randomizeVelocity(); }
         }
