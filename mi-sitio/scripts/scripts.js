@@ -139,6 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.style.left = pos.x + 'px';
         wrapper.style.top = pos.y + 'px';
     });
-    wrapper.addEventListener('pointerup', (e) => { dragging = false; roam = false; /* remain paused after drag */ });
-    wrapper.addEventListener('pointercancel', () => { dragging = false; roam = false; });
+    wrapper.addEventListener('pointerup', (e) => { 
+        dragging = false; 
+        roam = true; // Reactivar el movimiento después del arrastre
+        randomizeVelocity(); // Dar nueva velocidad aleatoria
+    });
+    wrapper.addEventListener('pointercancel', () => { 
+        dragging = false; 
+        roam = true; // Reactivar el movimiento si se cancela el arrastre
+        randomizeVelocity();
+    });
 });
