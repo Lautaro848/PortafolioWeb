@@ -5,9 +5,51 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — Lautaro Braun</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Particles demo styles (small) -->
+  <link rel="stylesheet" href="imagenes/particles.js-master/particles.js-master/demo/css/style.css">
+  <style>
+    /* Full-height layout */
+    html, body { height: 100%; }
+    /* Particles as a full-bleed background behind content */
+    #particles-js {
+      position: fixed;
+      inset: 0; /* top:0; right:0; bottom:0; left:0 */
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.95;
+      background: transparent; /* let particles draw on transparent canvas */
+    }
+    /* Content sits above the particles */
+    .content-wrapper { position: relative; z-index: 1; min-height: 100vh; }
+
+    /* Glass-like project cards so particles can be seen through */
+    .project-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(16,24,40,0.04);
+      backdrop-filter: blur(6px) saturate(110%);
+      -webkit-backdrop-filter: blur(6px) saturate(110%);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* Make cards plain on very small screens for performance/readability */
+    @media (max-width: 640px) {
+      #particles-js { display: none; }
+      .project-card { background: #fff; backdrop-filter: none; }
+    }
+  </style>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+  <!-- particles.js container (background) -->
+  <div id="particles-js"></div>
+  <div class="content-wrapper">
 <header class="max-w-6xl w-full mx-auto py-6 px-6 flex justify-between items-center">
   <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
   <nav class="flex gap-6 font-semibold">
@@ -15,6 +57,8 @@
     <a href="about.html">ABOUT</a>
     <a href="archive.html">ARCHIVE</a>
   </nav>
+  <!-- Toggle particles background -->
+  <button id="toggle-particles" class="ml-4 bg-gray-100 border rounded px-3 py-1 text-sm hover:bg-gray-200" aria-pressed="true" aria-label="Alternar fondo animado">Fondo</button>
 </header>
 
 <section class="max-w-6xl mx-auto grid gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,5 +105,51 @@
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script src="scripts/scripts.js"></script>
+<!-- particles.js library and init (from local copy) -->
+<script src="imagenes/particles.js-master/particles.js-master/particles.js"></script>
+<script src="imagenes/particles.js-master/particles.js-master/demo/js/app.js"></script>
+
+<!-- Toggle script: enable/disable particles and save preference -->
+<script>
+  (function(){
+    const el = document.getElementById('particles-js');
+    const btn = document.getElementById('toggle-particles');
+    const storageKey = 'particles-enabled';
+
+    function setParticles(enabled){
+      if(!el) return;
+      if(enabled){
+        el.style.display = '';
+        // try to resume rendering if pJSDom exists
+        try{ if(window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) window.pJSDom[0].pJS.fn.play(); }catch(e){}
+        btn.setAttribute('aria-pressed','true');
+        btn.classList.remove('opacity-60');
+      } else {
+        el.style.display = 'none';
+        // try to stop heavy loops if available
+        try{ if(window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) window.pJSDom[0].pJS.fn.pause(); }catch(e){}
+        btn.setAttribute('aria-pressed','false');
+        btn.classList.add('opacity-60');
+      }
+      try{ localStorage.setItem(storageKey, enabled ? '1' : '0'); }catch(e){}
+    }
+
+    // initialize state from localStorage (default: enabled)
+    try{
+      const stored = localStorage.getItem(storageKey);
+      const enabled = stored === null ? true : stored === '1';
+      setParticles(enabled);
+    } catch(e){ setParticles(true); }
+
+    // toggle handler
+    if(btn){
+      btn.addEventListener('click', function(){
+        const currently = btn.getAttribute('aria-pressed') === 'true';
+        setParticles(!currently);
+      });
+    }
+  })();
+</script>
+</div>
 </body>
 </html>
