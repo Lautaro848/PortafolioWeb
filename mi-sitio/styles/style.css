@@ -281,13 +281,44 @@ body {
   position: fixed;
   width: 64px;
   height: 64px;
+  bottom: 60px;
+  left: 60px;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  image-rendering: pixelated;
-  transition: transform 0.15s ease-out;
+  background: transparent;
+  transition: transform 0.2s ease-out;
 }
 
+/* Animación de flotación */
+.cursor-mascot:not(.walk) {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Animación de caminar */
+.walk {
+  animation: walk 0.4s steps(2) infinite;
+}
+
+@keyframes walk {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 @media (max-width: 768px) {
   .cursor-mascot {

@@ -1,0 +1,34 @@
+/* Particles background and UI styles */
+
+/* Canvas / container */
+#particles-js{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+  background: transparent;
+}
+
+.content-wrapper{ position: relative; z-index: 1; min-height: 100vh; }
+
+/* Glass card style used for project cards */
+.project-card{
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(16,24,40,0.04);
+  backdrop-filter: blur(6px) saturate(110%);
+  -webkit-backdrop-filter: blur(6px) saturate(110%);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.project-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(16,24,40,0.08); background: rgba(255,255,255,0.9); }
+
+/* Toggle button styles */
+.particles-toggle{ display:inline-flex; align-items:center; gap:8px; background:#f3f4f6; border:1px solid rgba(0,0,0,0.06); padding:6px 10px; border-radius:8px; cursor:pointer; }
+.particles-toggle svg{ width:18px; height:18px; flex:0 0 18px; }
+.particles-toggle:focus{ outline:3px solid rgba(59,130,246,0.18); outline-offset:2px; }
+.particles-toggle[aria-pressed="false"]{ opacity:0.6; }
+
+/* Small screens: hide particles to save battery and CPU */
+@media (max-width:640px){ #particles-js{ display:none; } .project-card{ background:#fff; backdrop-filter:none; } }

@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Archive — Lautaro Braun</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/particles.css">
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+  <div id="particles-js"></div>
+  <div class="content-wrapper">
 <header class="max-w-6xl w-full mx-auto py-6 px-6 flex justify-between items-center">
   <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
   <nav class="flex gap-6 font-semibold">
@@ -15,6 +18,10 @@
     <a href="about.html">ABOUT</a>
     <a href="archive.html" class="text-orange-500">ARCHIVE</a>
   </nav>
+  <button data-particles-toggle class="particles-toggle ml-4" aria-pressed="true" aria-label="Alternar fondo animado">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm5.657 3.343a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM21 11a1 1 0 110 2h-1a1 1 0 110-2h1zM17.657 18.657a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM12 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM6.343 18.657a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 110 2H3a1 1 0 110-2h1zM6.343 5.343a1 1 0 011.414-1.414l.707.707A1 1 0 017.464 6.04l-.707-.707a1 1 0 01-1.414 0zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
+    <span>Fondo</span>
+  </button>
 </header>
 
 <section class="max-w-4xl mx-auto px-6 py-16">
@@ -45,5 +52,9 @@
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script src="scripts/scripts.js"></script>
+<!-- particles.js library and centralized init -->
+<script src="imagenes/particles.js-master/particles.js-master/particles.js"></script>
+<script src="scripts/particles-init.js"></script>
+</div>
 </body>
 </html>
