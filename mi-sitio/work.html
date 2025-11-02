@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — Lautaro Braun</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/particles.css">
 </head>
 
@@ -12,18 +13,25 @@
   <!-- particles background container -->
   <div id="particles-js"></div>
   <div class="content-wrapper">
-<header class="max-w-6xl w-full mx-auto py-6 px-6 flex justify-between items-center">
-  <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
-  <nav class="flex gap-6 font-semibold">
-    <a href="work.html" class="text-orange-500">WORK</a>
-    <a href="about.html">ABOUT</a>
-    <a href="archive.html">ARCHIVE</a>
-  </nav>
-  <!-- Toggle particles background -->
-  <button data-particles-toggle class="particles-toggle ml-4" aria-pressed="true" aria-label="Alternar fondo animado">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm5.657 3.343a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM21 11a1 1 0 110 2h-1a1 1 0 110-2h1zM17.657 18.657a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM12 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM6.343 18.657a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 110 2H3a1 1 0 110-2h1zM6.343 5.343a1 1 0 011.414-1.414l.707.707A1 1 0 017.464 6.04l-.707-.707a1 1 0 01-1.414 0zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
-    <span>Fondo</span>
-  </button>
+<header class="max-w-6xl w-full mx-auto py-6 px-6 flex items-center justify-between">
+  <div class="flex items-center gap-6">
+    <a href="index.html" class="text-xl font-bold">LAUTARO BRAUN</a>
+    <nav class="hidden md:flex gap-6 font-semibold">
+      <a href="work.html" class="hover:text-orange-500">WORK</a>
+      <a href="about.html" class="hover:text-orange-500">ABOUT</a>
+    </nav>
+  </div>
+
+  <div class="flex items-center gap-4 relative">
+    <button id="gear-button" class="gear-button p-2 rounded-md" aria-expanded="false" aria-label="Abrir opciones">
+      <svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.14 12.936c.036-.304.06-.61.06-.936s-.024-.632-.07-.936l2.03-1.58a.5.5 0 00.12-.64l-1.92-3.32a.5.5 0 00-.6-.22l-2.39.96a7.04 7.04 0 00-1.62-.94l-.36-2.54A.5.5 0 0013.53 2h-3.06a.5.5 0 00-.49.41l-.36 2.54c-.58.24-1.12.56-1.62.94l-2.39-.96a.5.5 0 00-.6.22L2.7 8.62a.5.5 0 00.12.64l2.03 1.58c-.05.304-.07.61-.07.936 0 .326.02.632.07.936l-2.03 1.58a.5.5 0 00-.12.64l1.92 3.32c.14.24.44.33.68.23l2.39-.96c.5.38 1.04.7 1.62.94l.36 2.54c.05.28.29.48.57.48h3.06c.28 0 .52-.2.57-.48l.36-2.54c.58-.24 1.12-.56 1.62-.94l2.39.96c.24.1.54.01.68-.23l1.92-3.32a.5.5 0 00-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/></svg>
+    </button>
+    <div id="gear-panel" class="gear-panel hidden absolute right-6 mt-2 bg-white border rounded-md shadow-md p-2 text-sm">
+      <button data-mascot-toggle class="w-full text-left py-2" aria-pressed="true">Mostrar mascota</button>
+      <button data-mascot-small class="w-full text-left py-2" aria-pressed="false">Mascota pequeña</button>
+      <button data-particles-toggle class="w-full text-left py-2" aria-pressed="true">Fondo animado</button>
+    </div>
+  </div>
 </header>
 
 <section class="max-w-6xl mx-auto grid gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-3">

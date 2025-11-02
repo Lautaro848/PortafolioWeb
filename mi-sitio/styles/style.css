@@ -330,8 +330,9 @@ body {
   text-align: center;
 }
 .mascot-viewer {
-  width: 320px;
-  height: 320px;
+  /* Tamaño reducido por defecto para la mascota */
+  width: 220px;
+  height: 220px;
   max-width: 90vw;
   max-height: 70vh;
   margin: 0 auto;
@@ -343,9 +344,39 @@ body {
 
 @media (max-width: 768px) {
   .mascot-viewer {
-    width: 220px;
-    height: 220px;
+    width: 160px;
+    height: 160px;
   }
+}
+
+/* Estilos para el panel de la tuerca (gear) */
+.gear-button {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.gear-panel {
+  display: none;
+  min-width: 180px;
+  z-index: 1200;
+}
+.gear-panel button {
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.gear-panel button:hover {
+  background: #f3f4f6;
+}
+.gear-panel.show {
+  display: block;
 }
 
 .mascot-wrapper.roam {
@@ -365,6 +396,12 @@ body {
   max-height: none;
   margin: 0;
   border-radius: 10px;
+}
+
+/* Clase que se activa desde Opciones: mascot más pequeño */
+.mascot-wrapper.mascot-small .mascot-viewer {
+  width: 110px;
+  height: 110px;
 }
 
 .mascot-inner {
