@@ -179,14 +179,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!mWrap) return;
         if (size === 'small') {
             mWrap.classList.add('mascot-small');
-            // explicit small dimensions for model-viewer (helps some browsers)
-            if (mv) { mv.style.width = '110px'; mv.style.height = '110px'; }
             try { localStorage.setItem('mascot-size', 'small'); } catch(e) {}
             if (mascotSizeBtn) mascotSizeBtn.setAttribute('aria-pressed', 'true');
             if (mascotSizeBtn) mascotSizeBtn.textContent = 'Mascota pequeña ✓';
         } else {
             mWrap.classList.remove('mascot-small');
-            if (mv) { mv.style.width = ''; mv.style.height = ''; }
             try { localStorage.setItem('mascot-size', 'normal'); } catch(e) {}
             if (mascotSizeBtn) mascotSizeBtn.setAttribute('aria-pressed', 'false');
             if (mascotSizeBtn) mascotSizeBtn.textContent = 'Mascota pequeña';
